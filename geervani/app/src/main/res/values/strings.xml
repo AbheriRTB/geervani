@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Geervani</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="search_label">Search Label</string>
+    <string name="search_hint">Search Hint</string>
+    <string name="todtab">SUBHASHITA</string>
+    <string name="topictab">TOPICS</string>
+    <string name="dicttab">DICTIONARY</string>
+    <string name="infotab">ABOUT</string>
+    <string name="nobackpress">Please select another tab</string>
+    <string name="welcome">गीर्वाणी</string>
+    <string name="info">
+<![CDATA[
+		<html>
+		 <head></head>
+		 <body style="text-align:justify;font-size:1.3em;background-color:#DCE8B7;">
+		        Samskrit is an ancient Indian Language.In fact, it is called the mother of all other languages.
+		        There was a time when people used to  communicate in Samskrit in day to day activites.
+		        But with the advent of various invasions to our land from outsiders, this language slowly disappeared from our lives.
+		        However, it remained as a part of the religious rituals.
+		        Since the 1990s, movements to spread spoken Sanskrit have been increasing.
+		        The 1991 and 2001, census of India recorded 49,736 and 14,135 persons, respectively, with Sanskrit as their native language.
+		        Large parts of the population, including children, are learning Sanskrit and are even using it to some extent in everyday communication
+		        in the following places
+		        <br><br>
+		        Mattur of Karnataka
+		        <br>
+		        Mohad, District: Narasinhpur, Madhya Pradesh
+		        <br>
+		        Jhiri, District: Rajgadh, Madhya Pradesh
+		        <br>
+		        Kaperan, District: Bundi, Rajasthan,  etc.
+		        <br><br>
+		        We are thankful to Samskrutha Bharathi, Girinagar, Bangalore, for providing the necessary
+	    data that was required.
+		 </body>
+		</html>
+		]]>
+    </string>
+    <string name="title_activity_main_activity_for_lower_version">MainActivityForLowerVersion</string>
+    <string name="legend">पु.   -   पुंलिङ्गम्\nस्त्री.  -  स्त्रीलिगम्\nन.   -  नपुंलिङ्गम्\nअ.      -   अव्ययम्\n
+						  वि.      -  विशेषणम्\nस.न.     -  सर्वनाम\nक्रि. -  क्रियापदम्\nद्वि.ए.व.  -  द्वितीया-एकवचनम्\n
+						  पं.ए.व.    -  पंचमी-एकवचनम्\nष्.ए.व. -  षष्ठी-एकवचनम्\nस्.ए.व.    -  सप्तमी-एकवचनम\n
+						  द्वि.व.     -  द्विवचनम्\nब.व        -  बहुवचनम् </string>
+
+</resources>

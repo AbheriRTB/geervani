@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFCCCC" 
+    android:id="@+id/topicFragment">
+
+    <ListView
+        android:id="@+id/topicsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/tabbar"
+        android:layout_above="@+id/sanskritView"
+        android:layout_marginLeft="0dp" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/sanskritView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/englishView"
+        android:textSize="28sp"
+        android:padding="10dp"
+        android:background="#efefef"
+        android:textColor="#0000ff"
+        android:text="Sanskrit Comes Here" />
+    <TextView
+        android:id="@+id/englishView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"
+        android:padding="5dp"
+        android:background="#fefefe"
+        android:textColor="#ffaaaa"
+        android:text="English Transliteration Comes Here" />
+
+</RelativeLayout>
