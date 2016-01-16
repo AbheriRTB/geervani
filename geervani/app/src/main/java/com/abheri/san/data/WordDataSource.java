@@ -68,7 +68,7 @@ public class WordDataSource {
 		List<Word> words = new ArrayList<Word>();
 
 		Cursor cursor = database.query(DataHelper.TABLE_WORD, allColumns, null,
-				null, null, null, null);
+				null, null, null, DataHelper.COLUMN_ENGLISHWORD + " ASC");
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {

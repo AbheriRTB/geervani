@@ -61,7 +61,7 @@ public class TopicsFragment extends Fragment {
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView
 		ArrayAdapter<Topic> adapter = new ArrayAdapter<Topic>(
-				rootView.getContext(), R.layout.sentences_row_layout, values);
+				rootView.getContext(), R.layout.topics_row_layout, values);
 
 		topiclist.setAdapter(adapter);
 		datasource.close();

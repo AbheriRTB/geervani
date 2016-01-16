@@ -8,13 +8,31 @@ android {
         applicationId "com.abheri.san"
         minSdkVersion 9
         targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+        //versionCode 1
+        //versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+            storeFile file('geervani.keystore')
+            storePassword 'abheri'
+            keyAlias 'geervani'
+            keyPassword 'abheri'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfigs {
+                release {
+                    storeFile file('geervani.keystore')
+                    storePassword 'abheri'
+                    keyAlias 'geervani'
+                    keyPassword 'abheri'
+                }
+            }
         }
     }
 }

@@ -2,25 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/Users/prasanna.ramaswamy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/19.1.0/support-annotations-19.1.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="5622de20ceb4850c3c1e0ba4749dcaac6cc762ae">
-        <dex dex="/Users/prasanna.ramaswamy/Documents/workspace/android/Geervani3Studio/app/build/intermediates/pre-dexed/debug/support-annotations-19.1.0-44a60434d9cdd113aa1a11996aa825c5d9c82720.jar" />
-    </item>
-    <item
-        jar="/Users/prasanna.ramaswamy/Documents/workspace/android/Geervani3Studio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
+        jar="/Users/Maha/Documents/workspace/github/geervani/branch_5dec2015/geervani/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
-        <dex dex="/Users/prasanna.ramaswamy/Documents/workspace/android/Geervani3Studio/app/build/intermediates/pre-dexed/debug/classes-74b333c1e8cc61d9e02f06755b2a6c8ee27d4dd3.jar" />
+        <dex dex="/Users/Maha/Documents/workspace/github/geervani/branch_5dec2015/geervani/app/build/intermediates/pre-dexed/release/classes-944bed1fa0c101d6e821cb1608ef36ca7b02abd1.jar" />
     </item>
     <item
-        jar="/Users/prasanna.ramaswamy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jar="/Users/Maha/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/19.1.0/support-annotations-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="5622de20ceb4850c3c1e0ba4749dcaac6cc762ae">
+        <dex dex="/Users/Maha/Documents/workspace/github/geervani/branch_5dec2015/geervani/app/build/intermediates/pre-dexed/release/support-annotations-19.1.0-5287c7e6a46d4ecb567a23abbe370961bc07387f.jar" />
+    </item>
+    <item
+        jar="/Users/Maha/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="/Users/prasanna.ramaswamy/Documents/workspace/android/Geervani3Studio/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-e89f1a130a7c98f51e435cd80a171dde3c9b45f7.jar" />
+        <dex dex="/Users/Maha/Documents/workspace/github/geervani/branch_5dec2015/geervani/app/build/intermediates/pre-dexed/release/support-v4-19.1.0-4bdd9373eb81ca99232856df105a28a30fff88df.jar" />
     </item>
 
 </items>

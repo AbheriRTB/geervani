@@ -60,7 +60,7 @@ public class WODFragment extends Fragment {
 				sCurrentLine = br.readLine();
 				if (sCurrentLine == null)
 					break;
-				if (sCurrentLine.equals("<break>")) {
+				if (sCurrentLine.trim().startsWith("<break>")) {
 					subhashitas.add(sub);
 					sub = "";
 				} else {

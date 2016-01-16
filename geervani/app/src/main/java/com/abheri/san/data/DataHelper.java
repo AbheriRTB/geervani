@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DataHelper extends SQLiteOpenHelper {
 
@@ -26,7 +27,7 @@ public class DataHelper extends SQLiteOpenHelper {
   public static final String COLUMN_SANSKRITWORD = "sanskritword";
 
   private static final String DATABASE_NAME = "geervani.db";
-  private static final int DATABASE_VERSION = 1;
+  private static final int DATABASE_VERSION = 2;
   
   private Context dbContext;
   
@@ -84,6 +85,7 @@ public class DataHelper extends SQLiteOpenHelper {
     TopicDataCreator.createTopics(dbContext, database);
     SentenceDataCreator.createSentences(dbContext, database);
     WordDataCreator.createWords(dbContext, database);
+    //WordDataCreatorPSV.createWords(dbContext, database);
   }
 
   @Override
@@ -91,7 +93,11 @@ public class DataHelper extends SQLiteOpenHelper {
     Log.w(DataHelper.class.getName(),
         "Upgrading database from version " + oldVersion + " to "
             + newVersion + ", which will destroy all old data");
+
     db.execSQL("DROP TABLE IF EXISTS " + TABLE_TOPIC);
+    db.execSQL("DROP TABLE IF EXISTS " + TABLE_SENTENCE);
+    db.execSQL("DROP TABLE IF EXISTS " + TABLE_WORD);
+
     onCreate(db);
   }
 

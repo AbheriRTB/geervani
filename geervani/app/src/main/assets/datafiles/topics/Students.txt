@@ -21,7 +21,7 @@ key9_sn: "भवती भागं गृह्णाति किम् ?<br>b
 key10_en: "No, my friend is participating.", 
 key10_sn: "न, मम सखी भागं गृह्णाति ।<br>na mama sakhI bhAgaM gRuhNAti.",
 key11_en:"I should return this book today, otherwise I'll have to pay fine.", 
-key11_sn: "एतत् पुस्तकम् अद्य प्रत्यर्पणीयं भोः, नो चेत् दण्डः दातव्यः भवेत्।<br>etat pustakam adya pratyarpaNIyaM, nO chet daNDaH dAtavyaH bhavEt.",
+key11_sn: "एतत् पुस्तकम् अद्य प्रत्यर्पणीयं , नो चेत् दण्डः दातव्यः भवेत्।<br>etat pustakam adya pratyarpaNIyaM, nO chet daNDaH dAtavyaH bhavEt.",
 key12_en: "Shall we go for a movie today ?", 
 key12_sn: "अद्य चलच्चित्रं द्रष्टुं गच्छामः किम् ?<br>adya chalanachitraM dRushTum gachChAmaH kim?",
 key13_en: "Tomorrow we have Biology practical exam, friend.", 

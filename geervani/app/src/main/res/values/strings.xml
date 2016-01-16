@@ -14,9 +14,7 @@
     <string name="welcome">गीर्वाणी</string>
     <string name="info">
 <![CDATA[
-		<html>
-		 <head></head>
-		 <body style="text-align:justify;font-size:1.3em;background-color:#DCE8B7;">
+		<p>
 		        Samskrit is an ancient Indian Language.In fact, it is called the mother of all other languages.
 		        There was a time when people used to  communicate in Samskrit in day to day activites.
 		        But with the advent of various invasions to our land from outsiders, this language slowly disappeared from our lives.
@@ -36,8 +34,7 @@
 		        <br><br>
 		        We are thankful to Samskrutha Bharathi, Girinagar, Bangalore, for providing the necessary
 	    data that was required.
-		 </body>
-		</html>
+		 </p>
 		]]>
     </string>
     <string name="title_activity_main_activity_for_lower_version">MainActivityForLowerVersion</string>

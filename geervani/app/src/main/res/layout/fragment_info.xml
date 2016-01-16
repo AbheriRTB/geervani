@@ -1,56 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/infolayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCE8B7" >
-    
-    
-
-     <TextView
-        android:id="@+id/welcometxt"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tabbar"
-        android:text="@string/welcome"
-        android:textColor="#2C692C"
-        android:textSize="35sp" />
-     
+    android:orientation="vertical"
+    android:weightSum="5"
+    android:background="@drawable/geervani_info_background" >
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1">
       <TextView 
         android:id="@+id/versioninfo"
-        android:layout_below="@+id/welcometxt"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20sp"/>
-      
-     <WebView 
-        android:id="@+id/infoview"
-        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:padding="25dp"
-        android:layout_margin="15dp"
-        android:layout_below="@+id/versioninfo"
-        android:layout_centerInParent="true"
-        />
+        android:paddingTop="3dp"
+        android:gravity="top|center_horizontal"
+        android:textSize="12sp"/>
+     </LinearLayout>
 
-  <!--  <TextView
-        android:id="@+id/infotxt"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/welcometxt"
-	    android:layout_marginLeft="15dp"
-	    android:layout_marginTop="30dp"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:scrollbars="vertical"
-        android:text="@string/info"
-        android:textSize="25sp" /> -->
-
-    <!--
-        
-    -->
-
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4">
+        <ScrollView
+            android:id="@+id/SCROLLER_ID"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="15dp"
+            android:scrollbars="vertical"
+            android:fillViewport="true">
+            <TextView
+                android:id="@+id/infoview"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="25dp"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
+                />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

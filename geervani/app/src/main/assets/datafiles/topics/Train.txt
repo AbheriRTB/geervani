@@ -49,7 +49,7 @@ key23_sn: "निमेष्-त्रयं केवलम् ।<br>nimiShEt
 key24_en: "At what time does the train reach Delhi?",
 key24_sn: "यानं देहलीं कस्मिन् समये प्रप्नोति?<br>yAnaM dehalIM kasmin samayE prapnOti?",
 key25_en: "It reaches at 10 o` clock.",
-key25_sn: "दशवादने प्रप्नोति ।<br>dashavAdanE prApnOti.",
+key25_sn: "दशवादने प्राप्नोति  ।<br>dashavAdanE prApnOti.",
 key26_en: "There are still two hours.",
 key26_sn: "इतोपि घण्टाद्वयम् अस्ति ।<br>itOpi ghaNTAdvayam asti.",
 key27_en: "Let us adjust a little. ",
