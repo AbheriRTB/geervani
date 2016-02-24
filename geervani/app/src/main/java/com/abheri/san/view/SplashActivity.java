@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.abheri.san.R;
+import com.abheri.san.data.DataFileCopier;
 import com.abheri.san.data.TopicDataSource;
 
 import android.os.Bundle;
@@ -48,6 +49,8 @@ public class SplashActivity extends Activity {
             	finish();
             	Intent myIntent;
             	Log.i("PRAS", "Android Version Is:" + Util.androidversion);
+				DataFileCopier dfc = new DataFileCopier();
+				dfc.copyTopicFiles();
                 // Start MainActivity.class
         		if (Util.androidversion >= Util.minversioncheck)
             	{

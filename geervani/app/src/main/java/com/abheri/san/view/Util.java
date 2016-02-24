@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class Util {
@@ -33,6 +34,35 @@ public class Util {
 	
 	//Uncomment the following line if want to fake the android version for testing
 	//public static int androidversion = 8;
+
+
+	//--------------- Data Releated
+
+	public static final String[] topic_files = new String[] { "Etiquettes", "Introduction",
+			"MeetingFriends", "Journey", "OnArrival", "Train", "Students",
+			"Examination", "Films", "Teachers", "Telephone",
+			"DressJewelry", "Commerce", "Weather", "Domestic", "Food",
+			"Women", "Time", "Greetings", };
+
+
+	public static String getServiceUrl(){
+
+		String url = "";
+
+		url="http://abheri.pythonanywhere.com/static/geervani/datafiles/";
+		//url="http://10.0.3.2:9999/programs/";
+
+		return url;
+	}
+
+
+	public void myToastMessage(android.content.Context context){
+
+		Toast.makeText(
+				context,
+				"Timer Cancelled...",
+				Toast.LENGTH_SHORT).show();
+	}
 	
 
 

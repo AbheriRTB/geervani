@@ -9,6 +9,7 @@ import java.io.*;
 import java.util.Hashtable;
 
 import com.abheri.san.view.SplashActivity;
+import com.abheri.san.view.Util;
 
 
 public class SentenceDataCreator {
@@ -30,11 +31,7 @@ public class SentenceDataCreator {
 				TopicDataCreator.WOMEN_ID, TopicDataCreator.TIME_ID,
 				TopicDataCreator.GREETINGS_ID };
 
-		String[] topic_files = new String[] { "Etiquettes", "Introduction",
-				"MeetingFriends", "Journey", "OnArrival", "Train", "Students",
-				"Examination", "Films", "Teachers", "Telephone",
-				"DressJewelry", "Commerce", "Weather", "Domestic", "Food",
-				"Women", "Time", "Greetings", };
+		String[] topic_files = Util.topic_files;
 
 		for (int i = 0; i < topic_files.length; ++i) {
 			try {
@@ -42,11 +39,27 @@ public class SentenceDataCreator {
 				Log.i("PRAS",topic_files[i]);
 
 				Context c = SplashActivity.getAppContext();
-				
-				AssetManager am = c.getAssets();
-				InputStream is = am.open("datafiles/topics/" + topic_files[i]
-						+ ".txt");
-				InputStreamReader inputStreamReader = new InputStreamReader(is);
+
+				InputStream is;
+				InputStreamReader inputStreamReader;
+				if(DataFileCopier.isSDCardAvailable()){
+
+					//Read the files from SD card
+					System.out.println("****READING FROM SD CARD****");
+					DataFileCopier dfc = new DataFileCopier();
+					File infile = dfc.getFileOnSDCardForReading(topic_files[i] + ".txt", dfc.TOPIC_DIRECTORY);
+					is = new FileInputStream(infile);
+					inputStreamReader = new InputStreamReader(is, "UTF-8");
+
+				} else{
+
+					//Read from the assets directory
+					System.out.println("****READING FROM ASSETS****");
+					AssetManager am = c.getAssets();
+					is = am.open("datafiles/topics/" + topic_files[i] + ".txt");
+					inputStreamReader = new InputStreamReader(is);
+				}
+
 				BufferedReader br = new BufferedReader(inputStreamReader);
 
 				String line;
