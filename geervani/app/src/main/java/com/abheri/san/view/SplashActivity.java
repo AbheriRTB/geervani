@@ -49,8 +49,7 @@ public class SplashActivity extends Activity {
             	finish();
             	Intent myIntent;
             	Log.i("PRAS", "Android Version Is:" + Util.androidversion);
-				DataFileCopier dfc = new DataFileCopier();
-				dfc.copyTopicFiles();
+
                 // Start MainActivity.class
         		if (Util.androidversion >= Util.minversioncheck)
             	{

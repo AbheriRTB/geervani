@@ -43,6 +43,14 @@
             android:gravity="center"
             android:text=""
             android:textSize="25dp" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/WODProgressBar"
+            android:layout_gravity="center_horizontal|center_vertical" />
     </LinearLayout>
+
+
 
 </RelativeLayout>

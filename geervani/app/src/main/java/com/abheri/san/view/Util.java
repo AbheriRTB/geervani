@@ -49,7 +49,8 @@ public class Util {
 
 		String url = "";
 
-		url="http://abheri.pythonanywhere.com/static/geervani/datafiles/";
+		url="http://10.0.3.2/datafiles/";
+		//url="http://abheri.pythonanywhere.com/static/geervani/datafiles/";
 		//url="http://10.0.3.2:9999/programs/";
 
 		return url;
