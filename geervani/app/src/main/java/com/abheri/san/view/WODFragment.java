@@ -115,19 +115,20 @@ public class WODFragment extends Fragment implements HandleServiceResponse {
 		Util ut = new Util();
 		if (NetworkUtil.isNetworkAvailable(context))  {
             progressBar.setVisibility(View.VISIBLE);
-			WebFileReader rt = new WebFileReader(fragmentThis, GeervaniViews.HOME);
+			WebFileReader rt = new WebFileReader(fragmentThis, GeervaniViews.HOME, context);
 			rt.execute("");
 		}
 	}
 
 	@Override
 	public void onSuccess(Object result) {
+		/*
 		DataHelper dh = new DataHelper(context);
 		SQLiteDatabase database = dh.getDatabase();
 
 		dh.TruncateSenteceTable();
 		SentenceDataCreator sdc = new SentenceDataCreator(context, database);
-		sdc.createSentences();
+		sdc.createSentences(); */
 
         progressBar.setVisibility(View.GONE);
 	}

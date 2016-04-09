@@ -1,5 +1,7 @@
 package com.abheri.san.data;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
 import com.abheri.san.view.Util;
@@ -16,10 +18,13 @@ import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
-import java.util.StringTokenizer;
+import java.util.List;
 import java.util.TimeZone;
 
 /**
@@ -31,12 +36,22 @@ public class DataFileCopier {
     public final String TOPIC_DIRECTORY = "topics";
     public final String DICTIONARY_DIRECTORY = "dictionary";
 
+    public FileCacheDataSource fcds;
+    private Context context;
+    private DataHelper dbHelper;
+    private SQLiteDatabase database;
+
     public static boolean isSDCardAvailable(){
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             return true;
         }
 
         return false;
+    }
+
+    public DataFileCopier(Context ctx){
+        context = ctx;
+        fcds = new FileCacheDataSource(ctx);
     }
 
     public File getFileOnSDCardForReading(String filename, String subdir) {
@@ -83,6 +98,7 @@ public class DataFileCopier {
 
     public void copyTopicFiles() {
 
+        Boolean hasAtleastOneFileChanged = false;
         //Do nothing if SD card is not available
         if(!isSDCardAvailable())
             return;
@@ -91,25 +107,31 @@ public class DataFileCopier {
         String newline = System.getProperty("line.separator");
 
         for(int i=0; i<topic_files.length; ++i) {
-            File topicFile = createNewDataFile(topic_files[i]+".txt", TOPIC_DIRECTORY);
 
             try {
-                OutputStream os = (OutputStream) new FileOutputStream(topicFile);
-                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 
                 // Create a URL for the desired page
                 String urlString = Util.getServiceUrl()+TOPIC_DIRECTORY + "/" + topic_files[i]+".txt";
 
+                /* CHeck if the file has changed since last download
+                If file has not changed don't do anything. If changed
+                download the file to local and refresh the database
+                 */
+
                 URLConnection urlConnection = new URL(urlString).openConnection();
                 String lastModified = urlConnection.getHeaderField("Last-Modified");
                 System.out.println(">>>>>>>>>>>>>>>>>" + lastModified);
-                Date modDate = getLastModifiedDateFromString(lastModified);
+                Date modDate = getDateFromString(lastModified);
                 System.out.println("^^^^^^^^^^"+ modDate);
-                Date today = new Date();
-                if(today.compareTo(modDate) < 0){
-                    System.out.println("File has Changed");
+                Boolean isOld = isCacheOld(modDate, topic_files[i]);
+                if(!isOld){
+                    continue; //File has not changed check the next file in the list
                 }
 
+                //Download the file from web and store it in local SD Card
+                File topicFile = createNewDataFile(topic_files[i] + ".txt", TOPIC_DIRECTORY);
+                OutputStream os = (OutputStream) new FileOutputStream(topicFile);
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 
                 URL url = new URL(urlString);
 
@@ -122,6 +144,11 @@ public class DataFileCopier {
                 }
                 in.close();
                 out.close();
+
+                if(isOld){
+                    insertFileCacheInfo(topic_files[i]);
+                    hasAtleastOneFileChanged = true;
+                }
 
             } catch (MalformedURLException e) {
                 System.out.println("MalformedURLException");
@@ -139,10 +166,51 @@ public class DataFileCopier {
             }
         }
 
+        //Create Database Entries
+        if(hasAtleastOneFileChanged) {
+            createTopicAndSentenceData();
+        }
 
     }
 
-    Date getLastModifiedDateFromString(String dateStr){
+    void insertFileCacheInfo(String filename){
+        //Mon, 30 Jun 2014 06:17:16 GMT
+        Calendar cal = Calendar.getInstance();
+        Date curDate = cal.getTime();
+
+        DateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+        String cacheDate = sdf.format(curDate).toString();
+
+        List<FileCache> fcl = fcds.getFileCache(filename);
+        if(fcl != null) {
+           if(fcl.size() != 0) {
+                fcds.updateFileCache(filename, cacheDate);
+            }else{
+                fcds.createFileCache(filename, cacheDate);
+            }
+        }
+    }
+
+    Boolean isCacheOld(Date modDate, String filename){
+
+        String cacheDateStr;
+        Boolean isOld = true;
+
+        List<FileCache> fcl = fcds.getFileCache(filename);
+        if(fcl != null && fcl.size() == 1) {
+            cacheDateStr = fcl.get(0).getCachedate();
+            Date cacheDate = getDateFromString(cacheDateStr);
+            if (cacheDate.compareTo(modDate) > 0) {
+                isOld = false;
+                System.out.println("Cache is New:" + filename);
+            }
+        }
+
+        return isOld;
+    }
+
+
+    Date getDateFromString(String dateStr){
 
         Calendar cal;
         String day, month, year, hour, min, sec, tz, tmptime;
@@ -194,6 +262,16 @@ public class DataFileCopier {
         return cal.getTime();
     }
 
+    public void createTopicAndSentenceData(){
+        dbHelper = new DataHelper(context);
+        database = dbHelper.getWritableDatabase();
+
+        System.out.println("ReCreating Topic & Sentence Data");
+        TopicDataCreator.createTopics(context, database);
+
+        SentenceDataCreator sdc = new SentenceDataCreator(context, database);
+        sdc.createSentences();
+    }
 
 }
 

@@ -5,6 +5,7 @@ import java.util.List;
 import com.abheri.san.R;
 import com.abheri.san.data.*;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,11 +18,14 @@ import android.util.Log;
 
 public class TopicsFragment extends Fragment {
 
+    View rootView;
+    ListView listView;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_topics, container,
+        rootView = inflater.inflate(R.layout.fragment_topics, container,
 				false);
 
 		/* Add programmatic tabbar to support lower versions */
@@ -40,7 +44,7 @@ public class TopicsFragment extends Fragment {
 		// --------------------------------
 
 		// Get ListView object from xml
-		ListView listView = (ListView) rootView.findViewById(R.id.topicsList);
+        listView = (ListView) rootView.findViewById(R.id.topicsList);
 		listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		listView.setSelector(android.R.color.holo_blue_light);
 
@@ -51,6 +55,20 @@ public class TopicsFragment extends Fragment {
 
 		return rootView;
 	}
+
+	@Override
+	public void onResume(){
+        super.onResume();
+        updateTopicList(rootView, listView);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        System.out.println("In onAttach of WODFragment");
+        //updateTopicList(rootView, listView);
+    }
+
 
 	void updateTopicList(View rootView, ListView topiclist) {
 		TopicDataSource datasource = new TopicDataSource(rootView.getContext());

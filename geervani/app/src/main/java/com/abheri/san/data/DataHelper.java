@@ -28,6 +28,11 @@ public class DataHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ENGLISHWORD = "englishword";
     public static final String COLUMN_SANSKRITWORD = "sanskritword";
 
+    public static final String TABLE_CACHE = "cache_table";
+    public static final String COLUMN_CID = "_cid";
+    public static final String COLUMN_FILENAME = "filename";
+    public static final String COLUMN_DATECACHED = "datecached";
+
     private static final String DATABASE_NAME = "geervani.db";
     private static final int DATABASE_VERSION = 2;
 
@@ -67,6 +72,14 @@ public class DataHelper extends SQLiteOpenHelper {
             + COLUMN_SANSKRITWORD
             + " text not null );";
 
+    private static final String cache_table = "create table "
+            + TABLE_CACHE + "(" + COLUMN_CID
+            + " integer primary key autoincrement, "
+            + COLUMN_FILENAME
+            + " text not null, "
+            + COLUMN_DATECACHED
+            + " text not null );";
+
     public DataHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         dbContext = context;
@@ -82,16 +95,18 @@ public class DataHelper extends SQLiteOpenHelper {
         database.execSQL(topic_table);
         database.execSQL(sentence_table);
         database.execSQL(word_table);
-
+        database.execSQL(cache_table);
 
         // database.execSQL("INSERT INTO " + TABLE_TOPIC +" ( " + COLUMN_ID + "," + COLUMN_TOPIC + ") "
         // 		   + " Values (" + null + ", '" + "Etiqutte" + "');");
 
 
+        /*
         TopicDataCreator.createTopics(dbContext, database);
 
         SentenceDataCreator sdc = new SentenceDataCreator(dbContext, database);
         sdc.createSentences();
+        */
 
         WordDataCreator.createWords(dbContext, database);
         //WordDataCreatorPSV.createWords(dbContext, database);
@@ -108,6 +123,8 @@ public class DataHelper extends SQLiteOpenHelper {
         DeleteTopicTable();
         DeleteSentenceTable();
         DeleteWordTable();
+        DeleteCacheTable();
+
         onCreate(db);
     }
 
@@ -121,6 +138,9 @@ public class DataHelper extends SQLiteOpenHelper {
 
     public void DeleteWordTable() {
         getDatabase().execSQL("DROP TABLE IF EXISTS " + TABLE_WORD + ";");
+    }
+    public void DeleteCacheTable() {
+        getDatabase().execSQL("DROP TABLE IF EXISTS " + TABLE_CACHE + ";");
     }
 
     public void TruncateSenteceTable() {

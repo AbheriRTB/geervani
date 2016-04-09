@@ -46,6 +46,7 @@ public class TopicDataCreator {
 				"स्त्रियः", "समयः", "शुभाशयाः", };
 
 		TopicDataSource tds = new TopicDataSource(context, db);
+		tds.deleteAllTopics();
 
 		for (int i = 0; i < topics.length; ++i)
 			tds.createTopic(topic_ids[i], topics[i], sanskrit_topics[i]);

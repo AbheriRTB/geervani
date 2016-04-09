@@ -54,7 +54,12 @@ public class TopicDataSource {
     long id = topic.getId();
     System.out.println("Topic deleted with id: " + id);
     database.delete(DataHelper.TABLE_TOPIC, DataHelper.COLUMN_TID
-        + " = " + id, null);
+            + " = " + id, null);
+  }
+
+  public void deleteAllTopics() {
+    int nrows = database.delete(DataHelper.TABLE_TOPIC, "1" , null);
+      System.out.println(nrows + " Topics deleted");
   }
 
   public List<Topic> getAllTopics() {

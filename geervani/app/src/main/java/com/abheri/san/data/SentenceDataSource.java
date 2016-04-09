@@ -55,7 +55,13 @@ public class SentenceDataSource {
     long id = sentence.getId();
     System.out.println("Sentence deleted with id: " + id);
     database.delete(DataHelper.TABLE_SENTENCE, DataHelper.COLUMN_SID
-        + " = " + id, null);
+            + " = " + id, null);
+  }
+
+  public void deleteAllSentences() {
+
+    int nrows = database.delete(DataHelper.TABLE_SENTENCE, "1", null);
+    System.out.println(nrows + " Sentences deleted");
   }
 
   public List<Sentence> getAllSentences() {

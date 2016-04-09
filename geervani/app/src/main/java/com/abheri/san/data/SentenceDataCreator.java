@@ -40,6 +40,7 @@ public class SentenceDataCreator {
     public void createSentences() {
 
         sds = new SentenceDataSource(context, db);
+        sds.deleteAllSentences();
 
         String[] topic_files = Util.topic_files;
 
@@ -56,7 +57,7 @@ public class SentenceDataCreator {
 
                     //Read the files from SD card
                     System.out.println("****READING FROM SD CARD****");
-                    DataFileCopier dfc = new DataFileCopier();
+                    DataFileCopier dfc = new DataFileCopier(context);
                     File infile = dfc.getFileOnSDCardForReading(topic_files[i] + ".txt", dfc.TOPIC_DIRECTORY);
                     is = new FileInputStream(infile);
                     inputStreamReader = new InputStreamReader(is, "UTF-8");
