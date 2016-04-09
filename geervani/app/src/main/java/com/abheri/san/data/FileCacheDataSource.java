@@ -100,7 +100,7 @@ public class FileCacheDataSource {
 
 		String query = "SELECT * FROM " + DataHelper.TABLE_CACHE + " "
 				+ "where " + DataHelper.COLUMN_FILENAME + "='" + filename + "';";
-		Log.i("PRAS", "Query=" + query);
+		//Log.i("PRAS", "Query=" + query);
 		Cursor cursor = database.rawQuery(query, null);
 
 		cursor.moveToFirst();

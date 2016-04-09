@@ -48,10 +48,7 @@ public class TopicsFragment extends Fragment {
 		listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		listView.setSelector(android.R.color.holo_blue_light);
 
-		updateTopicList(rootView, listView);
 		listView.setOnItemClickListener(new TopicDrillDown());
-
-		// -----------------------------------------------------------
 
 		return rootView;
 	}
@@ -60,13 +57,6 @@ public class TopicsFragment extends Fragment {
 	public void onResume(){
         super.onResume();
         updateTopicList(rootView, listView);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        System.out.println("In onAttach of WODFragment");
-        //updateTopicList(rootView, listView);
     }
 
 

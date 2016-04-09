@@ -44,6 +44,13 @@ public class Util {
 			"DressJewelry", "Commerce", "Weather", "Domestic", "Food",
 			"Women", "Time", "Greetings", };
 
+	public static final String[] word_files = new String[] { "LetterA", "LetterB", "LetterC",
+			"LetterD", "LetterE", "LetterF", "LetterG", "LetterH",
+			"LetterI", "LetterJ", "LetterK", "LetterK", "LetterL",
+			"LetterM", "LetterN", "LetterO", "LetterP", "LetterQ",
+			"LetterR", "LetterS", "LetterT", "LetterU", "LetterV",
+			"LetterW", "LetterX", "LetterY", "LetterZ", };
+
 
 	public static String getServiceUrl(){
 

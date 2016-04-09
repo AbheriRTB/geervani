@@ -9,14 +9,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.abheri.san.R;
-import com.abheri.san.data.DataHelper;
-import com.abheri.san.data.NetworkUtil;
-import com.abheri.san.data.SentenceDataCreator;
-import com.abheri.san.data.WebFileReader;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,10 +24,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.text.method.ScrollingMovementMethod;
 
-public class WODFragment extends Fragment implements HandleServiceResponse {
+public class WODFragment extends Fragment{
 
 	Context context;
-    ProgressBar progressBar;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,8 +36,6 @@ public class WODFragment extends Fragment implements HandleServiceResponse {
 
 		final View rootView = inflater.inflate(R.layout.fragment_wod,
 				container, false);
-
-        progressBar = (ProgressBar)rootView.findViewById(R.id.WODProgressBar);
 
 		/* Add Manual Tabbar (only for lower versions) */
 		if (Util.androidversion < Util.minversioncheck)
@@ -105,38 +97,6 @@ public class WODFragment extends Fragment implements HandleServiceResponse {
 		sv.setText(subhashitas.get(dayOfMonth));
 		sv.setMovementMethod(new ScrollingMovementMethod());
 
-		getData(this, true);
-
 		return rootView;
 	}
-
-	public void getData(WODFragment fragmentThis, boolean doRefresh) {
-
-		Util ut = new Util();
-		if (NetworkUtil.isNetworkAvailable(context))  {
-            progressBar.setVisibility(View.VISIBLE);
-			WebFileReader rt = new WebFileReader(fragmentThis, GeervaniViews.HOME, context);
-			rt.execute("");
-		}
-	}
-
-	@Override
-	public void onSuccess(Object result) {
-		/*
-		DataHelper dh = new DataHelper(context);
-		SQLiteDatabase database = dh.getDatabase();
-
-		dh.TruncateSenteceTable();
-		SentenceDataCreator sdc = new SentenceDataCreator(context, database);
-		sdc.createSentences(); */
-
-        progressBar.setVisibility(View.GONE);
-	}
-
-	@Override
-	public void onError(Object result) {
-        progressBar.setVisibility(View.GONE);
-
-
-    }
 }

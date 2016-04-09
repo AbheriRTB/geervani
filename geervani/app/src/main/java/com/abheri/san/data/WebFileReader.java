@@ -38,7 +38,11 @@ public class WebFileReader extends AsyncTask<String, String, Boolean> {
     protected Boolean doInBackground(String... uri) {
 
         DataFileCopier dfc = new DataFileCopier(context);
+
+        //TODO have copy files methods return boolean to differentiate
+        //  with an error case
         dfc.copyTopicFiles();
+        dfc.copyWordFiles();
 
         return true;
     }

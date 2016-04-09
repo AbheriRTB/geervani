@@ -106,9 +106,10 @@ public class DataHelper extends SQLiteOpenHelper {
 
         SentenceDataCreator sdc = new SentenceDataCreator(dbContext, database);
         sdc.createSentences();
-        */
+
 
         WordDataCreator.createWords(dbContext, database);
+         */
         //WordDataCreatorPSV.createWords(dbContext, database);
     }
 

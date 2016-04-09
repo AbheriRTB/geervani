@@ -59,26 +59,11 @@ public class SentencesFragment extends Fragment{
 		{
 			hv.setText(english + "(" +sanskrit+ ")");
 		}
-		
-		
-/*		TextView tv = (TextView) rootView.findViewById(R.id.sanskritView);
-		tv.setText(sanskrit);
 
-		TextView ev = (TextView) rootView.findViewById(R.id.englishView);
-		ev.setText(english);*/
 
 		// Get ListView object from xml
 		listView = (ListView) rootView.findViewById(R.id.sentenceList);
-		
-		//listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		//listView.setSelector(android.R.color.holo_blue_light);
-
-
-
-		updateSentenceList(rootView, listView, topic_id);
 		listView.setOnItemClickListener(new DisplaySentence());
-
-		// -----------------------------------------------------------
 
 		return rootView;
 	}

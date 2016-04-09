@@ -3,6 +3,7 @@ package com.abheri.san.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
+import android.util.Log;
 
 import com.abheri.san.view.Util;
 
@@ -120,9 +121,9 @@ public class DataFileCopier {
 
                 URLConnection urlConnection = new URL(urlString).openConnection();
                 String lastModified = urlConnection.getHeaderField("Last-Modified");
-                System.out.println(">>>>>>>>>>>>>>>>>" + lastModified);
+                //System.out.println(">>>>>>>>>>>>>>>>>" + lastModified);
                 Date modDate = getDateFromString(lastModified);
-                System.out.println("^^^^^^^^^^"+ modDate);
+                //System.out.println("^^^^^^^^^^"+ modDate);
                 Boolean isOld = isCacheOld(modDate, topic_files[i]);
                 if(!isOld){
                     continue; //File has not changed check the next file in the list
@@ -173,6 +174,103 @@ public class DataFileCopier {
 
     }
 
+    public void copyWordFiles() {
+
+        Boolean hasAtleastOneFileChanged = false;
+        //Do nothing if SD card is not available
+        if(!isSDCardAvailable())
+            return;
+
+        String word_files[] = Util.word_files;
+        String newline = System.getProperty("line.separator");
+
+        for(int i=0; i<word_files.length; ++i) {
+
+            try {
+
+                // Create a URL for the desired page
+                String urlString = Util.getServiceUrl()+ DICTIONARY_DIRECTORY + "/" + word_files[i]+".txt";
+
+                /* CHeck if the file has changed since last download
+                If file has not changed don't do anything. If changed
+                download the file to local and refresh the database
+                 */
+
+                URLConnection urlConnection = new URL(urlString).openConnection();
+                String lastModified = urlConnection.getHeaderField("Last-Modified");
+                //System.out.println(">>>>>>>>>>>>>>>>>" + lastModified);
+                Date modDate = getDateFromString(lastModified);
+                //System.out.println("^^^^^^^^^^"+ modDate);
+                Boolean isOld = isCacheOld(modDate, word_files[i]);
+                if(!isOld){
+                    continue; //File has not changed check the next file in the list
+                }
+
+                //Download the file from web and store it in local SD Card
+                File wordFile = createNewDataFile(word_files[i] + ".txt", DICTIONARY_DIRECTORY);
+                OutputStream os = (OutputStream) new FileOutputStream(wordFile);
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+
+                URL url = new URL(urlString);
+
+                // Read all the text returned by the server
+                BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+                String str;
+                while ((str = in.readLine()) != null) {
+                    // str is one line of text; readLine() strips the newline character(s)
+                    out.write(str + newline);
+                }
+                in.close();
+                out.close();
+
+                if(isOld){
+                    insertFileCacheInfo(word_files[i]);
+                    hasAtleastOneFileChanged = true;
+                }
+
+            } catch (MalformedURLException e) {
+                System.out.println("MalformedURLException");
+                e.printStackTrace();
+
+
+            } catch (FileNotFoundException e){
+                System.out.println("FileNotFoundException");
+                e.printStackTrace();
+
+            } catch (IOException e) {
+                System.out.println("IOException");
+                e.printStackTrace();
+
+            }
+        }
+
+        //Create Database Entries
+        if(hasAtleastOneFileChanged) {
+            createWordData();
+        }
+
+    }
+
+    public void createTopicAndSentenceData(){
+        dbHelper = new DataHelper(context);
+        database = dbHelper.getWritableDatabase();
+
+        System.out.println("ReCreating Topic & Sentence Data");
+        TopicDataCreator.createTopics(context, database);
+
+        SentenceDataCreator sdc = new SentenceDataCreator(context, database);
+        sdc.createSentences();
+    }
+
+    public void createWordData(){
+        dbHelper = new DataHelper(context);
+        database = dbHelper.getWritableDatabase();
+
+        System.out.println("ReCreating Dictionary Data");
+
+        WordDataCreator.createWords(context, database);
+    }
+
     void insertFileCacheInfo(String filename){
         //Mon, 30 Jun 2014 06:17:16 GMT
         Calendar cal = Calendar.getInstance();
@@ -202,7 +300,14 @@ public class DataFileCopier {
             Date cacheDate = getDateFromString(cacheDateStr);
             if (cacheDate.compareTo(modDate) > 0) {
                 isOld = false;
-                System.out.println("Cache is New:" + filename);
+                Log.i("PRAS", filename + ": NNN Cache is New NNN"  +
+                        "  CDate:" + cacheDateStr +
+                        "  FDate:" + modDate.toString());
+
+            }else{
+                Log.i("PRAS", filename + ": OOO Cache is OLD OOO"  +
+                        "  CDate:" + cacheDateStr +
+                        "  FDate:" + modDate.toString());
             }
         }
 
@@ -260,17 +365,6 @@ public class DataFileCopier {
         }
 
         return cal.getTime();
-    }
-
-    public void createTopicAndSentenceData(){
-        dbHelper = new DataHelper(context);
-        database = dbHelper.getWritableDatabase();
-
-        System.out.println("ReCreating Topic & Sentence Data");
-        TopicDataCreator.createTopics(context, database);
-
-        SentenceDataCreator sdc = new SentenceDataCreator(context, database);
-        sdc.createSentences();
     }
 
 }
