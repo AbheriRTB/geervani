@@ -23,34 +23,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/heading"
-        android:layout_above="@+id/sanskritView"
+        android:layout_above="@+id/sentenceSanskritView"
         android:layout_alignParentLeft="true"
         android:choiceMode="singleChoice" 
 	    android:layout_marginLeft="1dp" />
 
     <TextView
-        android:id="@+id/sanskritView"
+        android:id="@+id/sentenceSanskritView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/englishView"
-        android:textSize="30sp"
+        android:layout_above="@+id/sentenceEnglishView"
+        android:textSize="25sp"
         android:padding="10dp"
         android:background="#7EC2F6"
         android:textColor="#2E5422"
-        android:text="Sanskrit Comes Here" />
+        android:text="" />
     
     <TextView
-        android:id="@+id/englishView"
+        android:id="@+id/sentenceEnglishView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:padding="5dp"
         android:background="#1869F3"
         android:textColor="#ffff00"
-        android:text="English Transliteration Comes Here" />
+        android:text="" />
 
 
     

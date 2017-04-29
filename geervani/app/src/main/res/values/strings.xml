@@ -9,14 +9,14 @@
     <string name="todtab">SUBHASHITA</string>
     <string name="topictab">TOPICS</string>
     <string name="dicttab">DICTIONARY</string>
-    <string name="infotab">ABOUT</string>
+    <string name="infotab">INFO</string>
     <string name="nobackpress">Please select another tab</string>
     <string name="welcome">गीर्वाणी</string>
+    <string name="action_feedback">Send Feedback</string>
+    <string name="action_about">About Geervani</string>
     <string name="info">
 <![CDATA[
-		<html>
-		 <head></head>
-		 <body style="text-align:justify;font-size:1.3em;background-color:#DCE8B7;">
+		<p>
 		        Samskrit is an ancient Indian Language.In fact, it is called the mother of all other languages.
 		        There was a time when people used to  communicate in Samskrit in day to day activites.
 		        But with the advent of various invasions to our land from outsiders, this language slowly disappeared from our lives.
@@ -36,8 +36,7 @@
 		        <br><br>
 		        We are thankful to Samskrutha Bharathi, Girinagar, Bangalore, for providing the necessary
 	    data that was required.
-		 </body>
-		</html>
+		 </p>
 		]]>
     </string>
     <string name="title_activity_main_activity_for_lower_version">MainActivityForLowerVersion</string>
@@ -45,5 +44,13 @@
 						  वि.      -  विशेषणम्\nस.न.     -  सर्वनाम\nक्रि. -  क्रियापदम्\nद्वि.ए.व.  -  द्वितीया-एकवचनम्\n
 						  पं.ए.व.    -  पंचमी-एकवचनम्\nष्.ए.व. -  षष्ठी-एकवचनम्\nस्.ए.व.    -  सप्तमी-एकवचनम\n
 						  द्वि.व.     -  द्विवचनम्\nब.व        -  बहुवचनम् </string>
+
+	<string name="default_subhashita">उद्यमेनैव हि सिध्यन्ति, कार्याणि न मनोरथै।\n
+न हि सुप्तस्य सिंहस्य, प्रविशन्ति मृगाः॥\n
+\n
+Things are achieved by\n
+doing and not by desiring alone as deers\n
+by themselves don\'t go into a lion\'s\n
+mouth.</string>
 
 </resources>

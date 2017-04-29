@@ -1,5 +1,30 @@
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    >
+
+    <android.support.v4.view.ViewPager
     android:id="@+id/pager"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-</android.support.v4.view.ViewPager>
+    </android.support.v4.view.ViewPager>
+
+    <ImageView
+        android:id="@+id/MainLogoImage"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/MainProgressBar"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

@@ -17,12 +17,15 @@ import android.widget.TextView;
 
 public class SentencesFragment extends Fragment{
 
+	View rootView;
+	ListView listView;
+	long topic_id;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		View rootView = inflater.inflate(R.layout.fragment_sentences,
+		rootView = inflater.inflate(R.layout.fragment_sentences,
 				container, false);
 		
 		/* Add tabbar programatically to support lower versions */
@@ -42,7 +45,7 @@ public class SentencesFragment extends Fragment{
 		 * Topic in the text view
 		 */
 		Bundle arguments = getArguments();
-		long topic_id = arguments.getLong("topic_id");
+		topic_id = arguments.getLong("topic_id");
 		String topic = arguments.getString("topic");
 		String sanskrit = arguments.getString("topicsanskrit");
 		String english = topic;
@@ -56,28 +59,19 @@ public class SentencesFragment extends Fragment{
 		{
 			hv.setText(english + "(" +sanskrit+ ")");
 		}
-		
-		
-/*		TextView tv = (TextView) rootView.findViewById(R.id.sanskritView);
-		tv.setText(sanskrit);
 
-		TextView ev = (TextView) rootView.findViewById(R.id.englishView);
-		ev.setText(english);*/
 
 		// Get ListView object from xml
-		ListView listView = (ListView) rootView.findViewById(R.id.sentenceList);
-		
-		//listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		//listView.setSelector(android.R.color.holo_blue_light);
-
-
-
-		updateSentenceList(rootView, listView, topic_id);
+		listView = (ListView) rootView.findViewById(R.id.sentenceList);
 		listView.setOnItemClickListener(new DisplaySentence());
 
-		// -----------------------------------------------------------
-
 		return rootView;
+	}
+
+	@Override
+	public void onResume(){
+        super.onResume();
+		updateSentenceList(rootView, listView, topic_id);
 	}
 	
 	void updateSentenceList(View rootView, ListView topiclist, long topic_id)

@@ -10,11 +10,32 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+
+        <!-- <item name="colorPrimary">#004c99</item>
+        <item name="colorPrimaryDark">#004c99</item>
+        <item name="colorAccent">@color/orange</item> -->
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+
+
+        <style name="myTheme" parent="AppBaseTheme">
+            <item name="android:actionBarStyle">@style/ActionBar.MyStyle</item>
+        </style>
+
+        <style name="ActionBar.MyStyle" parent="@android:style/Widget.Holo.ActionBar">
+            <item name="android:indeterminateProgressStyle">@style/ActionBarProgressBar.MyStyle</item>
+
+        </style>
+
+        <style name="ActionBarProgressBar.MyStyle" parent="@android:style/Widget.Holo.ProgressBar.Small">
+            <item name="android:minWidth">28dp</item>
+            <item name="android:maxWidth">28dp</item>
+            <item name="android:minHeight">28dp</item>
+            <item name="android:maxHeight">28dp</item>
+        </style>
 
 </resources>

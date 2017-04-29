@@ -4,6 +4,7 @@
          android:layout_height="wrap_content"
          android:text="TextView"
          android:textSize="22sp"
+         android:padding="5dp"
          android:textStyle="bold" />
 
     <!--  <ImageView

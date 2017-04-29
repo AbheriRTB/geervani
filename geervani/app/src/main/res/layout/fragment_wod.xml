@@ -10,14 +10,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <ImageView
+        <!-- <ImageView
             android:id="@+id/titleimage"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/tabbar"
             android:layout_weight="2"
-            android:src="@drawable/home_img" />
+            android:src="@drawable/home_img" /> -->
+
+        <com.abheri.san.view.ProportionalImageView
+            android:id="@+id/titleimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:layout_below="@+id/tabbar"
+            android:layout_weight="2"
+            android:src="@drawable/home_img"
+            />
 
         <TextView
             android:id="@+id/subhashita"
@@ -29,6 +41,9 @@
             android:gravity="center"
             android:text=""
             android:textSize="25dp" />
+
     </LinearLayout>
+
+
 
 </RelativeLayout>

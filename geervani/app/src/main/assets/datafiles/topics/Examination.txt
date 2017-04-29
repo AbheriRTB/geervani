@@ -54,7 +54,7 @@ key26_sn: "इतोऽपि एक मासः अस्ति ।<br>itOpi e
 key27_en: "It will be declared in the next week.",
 key27_sn: "अग्रिम-सप्ताहे प्रकटितः भविष्यति ।<br>agima-saptAhe prakaTithaH bhaviShyati.",
 key28_en: "How many percent marks did you get ?",
-key28_sn: "प्रतिशतं कति अङ्काः प्राप्ताः ?<br>paratishataM kati ankAH praptAH?",
+key28_sn: "प्रतिशतं कति अङ्काः प्राप्ताः ?<br>pratishataM kati ankAH praptAH?",
 key29_en:  "I got 80% marks.",
 key29_sn: "मम 80% अङ्काः आगताः ।<br> mama 80% ankAH AgatAH.",
 key30_en: "He has failed in one subject.", 
@@ -64,7 +64,7 @@ key31_sn: "अङ्कद्वयेन मम प्रथम-स्थान
 key32_en: "His result has been withheld.", 
 key32_sn: "तस्य फलितांशः निरुद्धः अस्ति ।<br>tasya phalitAMshaH nirudhdaH asti.",
 key33_en: "She is applying for revaluation of this paper.", 
-key33_sn: "सा एतस्य पत्रस्य पुनर्मूल्याङ्कनार्थम् आवेदनं करिष्यति ।<br>saH Etasya patrasya punarmUlyAnkanArtham AvOdanaM kariShyati.",
+key33_sn: "सा एतस्य पत्रस्य पुनर्मूल्याङ्कनार्थम् आवेदनं करिष्यति ।<br>sA Etasya patrasya punarmUlyAnkanArtham AvOdanaM kariShyati.",
 key34_en: "Two months holidays from now on.", 
 key34_sn: "इतःपरं मासद्वयस्य विरामः ।<br> itaHparam mAsadvayasya virAmaH.", 
 key35_en: "Next year I will study well.",  

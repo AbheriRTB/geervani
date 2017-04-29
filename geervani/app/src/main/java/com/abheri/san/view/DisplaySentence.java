@@ -33,7 +33,7 @@ public class DisplaySentence implements OnItemClickListener {
 		Log.i("PRAS", "**************Sanskrit is " + sanskrit);
 
 		TextView tv = (TextView) view.getRootView().findViewById(
-				R.id.sanskritView);
+				R.id.sentenceSanskritView);
 
 		if (Util.androidversion < Util.minversioncheck) {
 			Typeface font = Util.getLocalFont();
@@ -43,7 +43,7 @@ public class DisplaySentence implements OnItemClickListener {
 		tv.setText(sanskrit);
 
 		TextView ev = (TextView) view.getRootView().findViewById(
-				R.id.englishView);
+				R.id.sentenceEnglishView);
 		ev.setText(translit);
 
 	}

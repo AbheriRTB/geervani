@@ -22,6 +22,7 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="orange">#FFaa33</color>
+    <item name="darkred" type="color">#FFCC0000</item>
 
-    
+
 </resources>

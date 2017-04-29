@@ -20,6 +20,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 public class DictionaryFragment extends Fragment implements OnClickListener {
@@ -31,6 +34,7 @@ public class DictionaryFragment extends Fragment implements OnClickListener {
 	ListView listView;
 	static int searchviewid;
 	FragmentManager fm;
+	TextView loadingText;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +48,9 @@ public class DictionaryFragment extends Fragment implements OnClickListener {
 		
 		Button popButton = (Button) rootView.findViewById(R.id.openpopup);
 		popButton.setOnClickListener(this);
+
+		loadingText = (TextView) rootView.findViewById(R.id.dictionaryLoadingText);
+		loadingText.setText("Loading Data. Please Wait...");
 		
 		
 		/* Add tabbar programatically to support lower versions */
@@ -145,7 +152,9 @@ public class DictionaryFragment extends Fragment implements OnClickListener {
 
 	}
 
-	void updateWordList(View rootView, ListView wordlist, String whereclause) {
+	void updateWordList(View rootView, String whereclause) {
+
+
 		WordDataSource datasource = new WordDataSource(rootView.getContext());
 		datasource.open();
 
@@ -154,6 +163,11 @@ public class DictionaryFragment extends Fragment implements OnClickListener {
 			values = datasource.getAllWords();
 		} else {
 			values = datasource.getAllWords(whereclause, true);
+		}
+
+
+		if(values.size() > 0){
+			loadingText.setVisibility(View.GONE);
 		}
 
 		dadapter.clear();
@@ -168,6 +182,8 @@ public class DictionaryFragment extends Fragment implements OnClickListener {
 		}
 		dadapter.notifyDataSetChanged();
 		datasource.close();
+
+
 	}
 	
 	@Override
