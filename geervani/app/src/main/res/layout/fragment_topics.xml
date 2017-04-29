@@ -19,7 +19,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="false"
         android:layout_below="@+id/tabbar"
-        android:layout_above="@+id/sanskritView"
         android:layout_marginLeft="0dp" >
     </ListView>
 

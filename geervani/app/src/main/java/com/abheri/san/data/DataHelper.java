@@ -90,9 +90,6 @@ public class DataHelper extends SQLiteOpenHelper {
         dbContext = context;
     }
 
-    public SQLiteDatabase getDatabase() {
-        return getWritableDatabase();
-    }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
@@ -126,34 +123,27 @@ public class DataHelper extends SQLiteOpenHelper {
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
 
-        DeleteTopicTable();
-        DeleteSentenceTable();
-        DeleteWordTable();
-        DeleteCacheTable();
+        DeleteTopicTable(db);
+        DeleteSentenceTable(db);
+        DeleteWordTable(db);
+        DeleteCacheTable(db);
 
         onCreate(db);
     }
 
-    public void DeleteTopicTable() {
-        getDatabase().execSQL("DROP TABLE IF EXISTS " + TABLE_TOPIC + ";");
+    public void DeleteTopicTable(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TOPIC + ";");
     }
 
-    public void DeleteSentenceTable() {
-        getDatabase().execSQL("DROP TABLE IF EXISTS " + TABLE_SENTENCE + ";");
+    public void DeleteSentenceTable(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SENTENCE + ";");
     }
 
-    public void DeleteWordTable() {
-        getDatabase().execSQL("DROP TABLE IF EXISTS " + TABLE_WORD + ";");
+    public void DeleteWordTable(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WORD + ";");
     }
-    public void DeleteCacheTable() {
-        getDatabase().execSQL("DROP TABLE IF EXISTS " + TABLE_CACHE + ";");
+    public void DeleteCacheTable(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CACHE + ";");
     }
-
-    public void TruncateSenteceTable() {
-        getDatabase().execSQL("DELETE FROM " + TABLE_SENTENCE + ";");
-        getDatabase().execSQL("VACUUM;");
-
-    }
-
 
 } 

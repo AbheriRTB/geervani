@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "887189055823",
-    "project_id": "geervani-debug"
+    "project_number": "670313791685",
+    "project_id": "firebase-geervani"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:887189055823:android:c62d352f5eb8bef6",
+        "mobilesdk_app_id": "1:670313791685:android:1d9dd6bca5a5d787",
         "android_client_info": {
-          "package_name": "com.abheri.san.debug"
+          "package_name": "com.abheri.san"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDbvGb3tenXhQW6DejZLGC2OpdlGP8e430"
+          "current_key": "AIzaSyBDn7WvacUlaqDA5pEZvtjDTGxN6KlWWt4"
         }
       ],
       "services": {
         "analytics_service": {
           "status": 2,
           "analytics_property": {
-            "tracking_id": "UA-74401723-4"
+            "tracking_id": "UA-74401723-3"
           }
         },
         "appinvite_service": {
