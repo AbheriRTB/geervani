@@ -113,6 +113,7 @@ public class DataFileCopier {
 
             try {
 
+                Boolean isOld = true;
                 // Create a URL for the desired page
                 String urlString = Util.getServiceUrl()+TOPIC_DIRECTORY + "/" + topic_files[i]+".txt";
 
@@ -128,9 +129,11 @@ public class DataFileCopier {
                 String lastModified = urlConnection.getHeaderField("Last-Modified");
 
                 //System.out.println(">>>>>>>>>>>>>>>>>" + lastModified);
-                Date modDate = getDateFromString(lastModified);
-                //System.out.println("^^^^^^^^^^"+ modDate);
-                Boolean isOld = isCacheOld(modDate, topic_files[i]);
+                if(lastModified != null) {
+                    Date modDate = getDateFromString(lastModified);
+                    //System.out.println("^^^^^^^^^^"+ modDate);
+                    isOld = isCacheOld(modDate, topic_files[i]);
+                }
                 if(!isOld){
                     continue; //File has not changed check the next file in the list
                 }
