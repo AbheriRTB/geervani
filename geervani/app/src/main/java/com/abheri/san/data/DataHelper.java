@@ -34,7 +34,12 @@ public class DataHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DATECACHED = "datecached";
 
     private static final String DATABASE_NAME = "geervani.db";
-    private static final int DATABASE_VERSION = 2;
+    /*
+    * DBVersion:3 29-Apr-2017
+    * Introduced async fetch of files from cloud
+    *
+     */
+    private static final int DATABASE_VERSION = 3;
 
     private Context dbContext;
 

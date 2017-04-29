@@ -48,6 +48,10 @@ public class SentenceDataCreator {
             try {
                 Log.i("PRAS", "Processing....");
                 Log.i("PRAS", topic_files[i]);
+                if(topic_files[i].equalsIgnoreCase(Util.SUBHASHITANI)){
+                    Log.i("PRAS", "Ignoring file: " + topic_files[i]);
+                    continue;
+                }
 
                 Context c = SplashActivity.getAppContext();
 

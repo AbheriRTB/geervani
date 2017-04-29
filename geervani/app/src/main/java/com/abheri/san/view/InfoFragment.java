@@ -27,6 +27,7 @@ public class InfoFragment extends Fragment {
 		LinearLayout lLayout = (LinearLayout)rootView.findViewById(R.id.infolayout);
 		
 		/* Add tabbar programatically to support lower versions */
+		/*
 		if (Util.androidversion < Util.minversioncheck)
 		{
 			View tabbarview = inflater.inflate(R.layout.tabbar, container, false);
@@ -38,14 +39,16 @@ public class InfoFragment extends Fragment {
 			Typeface font = Util.getLocalFont();
 			//TextView tv = (TextView)rootView.findViewById(R.id.welcometxt);
 			//tv.setTypeface(font);
-		}
+		}*/
 		
 		
-		//WebView wv = (WebView) rootView.findViewById(R.id.infoview);
+		WebView wv = (WebView) rootView.findViewById(R.id.infoWebView);
 		//wv.loadData(getString(R.string.info), "text/html", "utf-8");
+		wv.loadUrl("http://abheri.pythonanywhere.com/static/geervani/geervani_info.html");
 		
-		//wv.setScrollContainer(true);
+		wv.setScrollContainer(true);
 
+		/*
 		TextView tv = (TextView)rootView.findViewById(R.id.infoview);
 		tv.setText(Html.fromHtml(getString(R.string.info)).toString());
 
@@ -59,14 +62,16 @@ public class InfoFragment extends Fragment {
 		} catch (Exception e) {
 			// Huh? Really?
 		}
-		
+		*/
+
+		/*
 		TextView iv = (TextView) rootView.findViewById(R.id.versioninfo);
 		if (Util.androidversion < 19) {
             lLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
 			iv.setText(getResources().getString(R.string.welcome) + "(Version " + vn + ")");
 		}else{
 			iv.setText( "Version " + vn);
-		}
+		}*/
 
 		return rootView;
 	}

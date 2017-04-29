@@ -4,7 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.abheri.san.BuildConfig;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 @SuppressLint("NewApi")
 public class Util {
@@ -38,11 +43,13 @@ public class Util {
 
 	//--------------- Data Releated
 
+	public static final String SUBHASHITANI = "subhashitani";
+
 	public static final String[] topic_files = new String[] { "Etiquettes", "Introduction",
 			"MeetingFriends", "Journey", "OnArrival", "Train", "Students",
 			"Examination", "Films", "Teachers", "Telephone",
 			"DressJewelry", "Commerce", "Weather", "Domestic", "Food",
-			"Women", "Time", "Greetings", };
+			"Women", "Time", "Greetings", Util.SUBHASHITANI};
 
 	public static final String[] word_files = new String[] { "LetterA", "LetterB", "LetterC",
 			"LetterD", "LetterE", "LetterF", "LetterG", "LetterH",
@@ -56,9 +63,9 @@ public class Util {
 
 		String url = "";
 
-		url="http://10.0.3.2/datafiles/";
-		//url="http://abheri.pythonanywhere.com/static/geervani/datafiles/";
-		//url="http://10.0.3.2:9999/programs/";
+		//url="http://10.0.3.2/datafiles/"; //For Genymotion
+		//url = "http://10.0.2.2/datafiles/"; //For AVD
+		url="http://abheri.pythonanywhere.com/static/geervani/datafiles/";
 
 		return url;
 	}
@@ -70,6 +77,24 @@ public class Util {
 				context,
 				"Timer Cancelled...",
 				Toast.LENGTH_SHORT).show();
+	}
+
+	public static void logToGA(String what) {
+		Tracker mTracker;
+
+		//Log to Google Analytics only when the build type = Release
+		if (!BuildConfig.DEBUG) {
+			// Obtain the shared Tracker instance.
+			AnalyticsApplication application = (AnalyticsApplication) new AnalyticsApplication();
+			mTracker = application.getDefaultTracker();
+			Log.i("Geervani", "Setting screen name: " + what);
+			mTracker.setScreenName("Image~" + what);
+			mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+			mTracker.send(new HitBuilders.EventBuilder()
+					.setCategory("Action")
+					.setAction("Share")
+					.build());
+		}
 	}
 	
 

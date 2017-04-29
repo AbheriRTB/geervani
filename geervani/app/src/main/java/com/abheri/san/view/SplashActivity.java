@@ -4,7 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.abheri.san.R;
-import com.abheri.san.data.DataFileCopier;
 import com.abheri.san.data.TopicDataSource;
 
 import android.os.Bundle;

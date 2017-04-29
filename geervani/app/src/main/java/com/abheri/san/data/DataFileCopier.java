@@ -26,6 +26,8 @@ import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 
 /**
@@ -120,7 +122,11 @@ public class DataFileCopier {
                  */
 
                 URLConnection urlConnection = new URL(urlString).openConnection();
+                Map<String, List<String>> headers = urlConnection.getHeaderFields();
+                Set<Map.Entry<String, List<String>>> entrySet = headers.entrySet();
+
                 String lastModified = urlConnection.getHeaderField("Last-Modified");
+
                 //System.out.println(">>>>>>>>>>>>>>>>>" + lastModified);
                 Date modDate = getDateFromString(lastModified);
                 //System.out.println("^^^^^^^^^^"+ modDate);
@@ -273,10 +279,11 @@ public class DataFileCopier {
 
     void insertFileCacheInfo(String filename){
         //Mon, 30 Jun 2014 06:17:16 GMT
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         Date curDate = cal.getTime();
 
         DateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
         String cacheDate = sdf.format(curDate).toString();
 
         List<FileCache> fcl = fcds.getFileCache(filename);
@@ -317,26 +324,26 @@ public class DataFileCopier {
 
     Date getDateFromString(String dateStr){
 
-        Calendar cal;
+        Calendar cal=Calendar.getInstance();
         String day, month, year, hour, min, sec, tz, tmptime;
         HashMap<String, Integer> monthMap = new HashMap<String, Integer>();
-        monthMap.put("JAN", 1);
-        monthMap.put("FEB", 2);
-        monthMap.put("MAR", 3);
-        monthMap.put("APR", 4);
-        monthMap.put("MAY", 5);
-        monthMap.put("JUN", 6);
-        monthMap.put("JUL", 7);
-        monthMap.put("AUG", 8);
-        monthMap.put("SEP", 9);
-        monthMap.put("OCT", 10);
-        monthMap.put("NOV", 11);
-        monthMap.put("DEC", 12);
+        monthMap.put("JAN", 0);
+        monthMap.put("FEB", 1);
+        monthMap.put("MAR", 2);
+        monthMap.put("APR", 3);
+        monthMap.put("MAY", 4);
+        monthMap.put("JUN", 5);
+        monthMap.put("JUL", 6);
+        monthMap.put("AUG", 7);
+        monthMap.put("SEP", 8);
+        monthMap.put("OCT", 9);
+        monthMap.put("NOV", 10);
+        monthMap.put("DEC", 11);
 
 
         //Mon, 30 Jun 2014 06:17:16 GMT
 
-        cal = Calendar.getInstance();
+
         String parts[] = dateStr.split("\\s");
         if(parts.length == 6) {
             day = parts[1];
@@ -352,6 +359,8 @@ public class DataFileCopier {
                 min = tparts[1];
                 sec = tparts[2];
 
+                cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+                cal.setTimeZone(TimeZone.getTimeZone("GMT"));
                 cal.set(Integer.parseInt(year),
                         monthMap.get(month).intValue(),
                         Integer.parseInt(day),
@@ -359,7 +368,7 @@ public class DataFileCopier {
                         Integer.parseInt(min),
                         Integer.parseInt(sec)
                 );
-                cal.setTimeZone(TimeZone.getTimeZone(tz));
+
             }
 
         }

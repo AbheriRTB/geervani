@@ -26,7 +26,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             return new WODFragment();
         case 1:
             // Topics fragmentholder activity
-            return new TopicHolderFragment();
+            return new TopicsFragment();
         case 2:
             // Dictionary fragment activity
             return new DictionaryFragment();

@@ -39,7 +39,7 @@ public class WordDataSource {
 	}
 
 	public void close() {
-		dbHelper.close();
+		//dbHelper.close();
 	}
 
 	public Word createWord(String english, String sanskrit) {

@@ -31,7 +31,7 @@ public class TopicDataSource {
   }
 
   public void close() {
-    dbHelper.close();
+    //dbHelper.close();
   }
 
   public Topic createTopic(int tid, String topic, String topicsanskrit) {

@@ -31,7 +31,7 @@ public class SearchViewListener  implements
 	}
 
 	void updateWordList(View rootView, ListView wordlist, String whereclause) {
-		Context c = MainActivity.c;
+		Context c = MainActivity.context;
 		WordDataSource datasource = new WordDataSource(c);
 		datasource.open();
 

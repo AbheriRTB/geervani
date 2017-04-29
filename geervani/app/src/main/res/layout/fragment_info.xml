@@ -5,39 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="5"
-    android:background="@drawable/geervani_info_background" >
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="0dp"
-         android:layout_weight="1">
-      <TextView 
-        android:id="@+id/versioninfo"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingTop="3dp"
-        android:gravity="top|center_horizontal"
-        android:textSize="12sp"/>
-     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4">
-        <ScrollView
-            android:id="@+id/SCROLLER_ID"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_margin="15dp"
-            android:scrollbars="vertical"
-            android:fillViewport="true">
-            <TextView
-                android:id="@+id/infoview"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:padding="25dp"
-                android:layout_centerInParent="true"
-                android:textSize="20sp"
-                />
-        </ScrollView>
-    </LinearLayout>
+    android:background="#E8DBA7">
+     <WebView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/infoWebView">
+     </WebView>
 </LinearLayout>

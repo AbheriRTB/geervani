@@ -43,7 +43,7 @@ public class TopicDrillDown implements OnItemClickListener {
 		// and add the transaction to the back stack
 		if(Util.androidversion >= Util.minversioncheck)
 		{
-			transaction.replace(R.id.topicHolder, newFragment);
+			transaction.replace(R.id.topicFragment, newFragment);
 		}
 		else
 		{

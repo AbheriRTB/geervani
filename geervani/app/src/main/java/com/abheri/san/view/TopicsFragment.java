@@ -15,11 +15,13 @@ import android.widget.ListView;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.util.Log;
+import android.widget.TextView;
 
 public class TopicsFragment extends Fragment {
 
     View rootView;
     ListView listView;
+	TextView loadingText;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +45,8 @@ public class TopicsFragment extends Fragment {
 		Sentence.selectedPosition = -1; //Reset the position
 		// --------------------------------
 
+		loadingText = (TextView) rootView.findViewById(R.id.topicsLoadingText);
+		loadingText.setText("Loading Data. Please Wait...");
 		// Get ListView object from xml
         listView = (ListView) rootView.findViewById(R.id.topicsList);
 		listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -61,10 +65,15 @@ public class TopicsFragment extends Fragment {
 
 
 	void updateTopicList(View rootView, ListView topiclist) {
+
 		TopicDataSource datasource = new TopicDataSource(rootView.getContext());
 		datasource.open();
 
 		List<Topic> values = datasource.getAllTopics();
+
+		if(values.size() > 0){
+			loadingText.setVisibility(View.GONE);
+		}
 
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView

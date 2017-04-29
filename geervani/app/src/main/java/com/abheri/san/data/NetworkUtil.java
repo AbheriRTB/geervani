@@ -22,8 +22,10 @@ public class NetworkUtil {
                     "Network not available. Using stored data",
                     Toast.LENGTH_SHORT).show();
         }
-        //return networkAvailable;
-        return true;
+        return networkAvailable;
+        //return true;
 
     }
+
 }
+

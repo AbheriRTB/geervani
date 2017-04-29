@@ -31,7 +31,7 @@ public class SentenceDataSource {
   }
 
   public void close() {
-    dbHelper.close();
+    //dbHelper.close();
   }
 
   public Sentence createSentence(String english, String sanskrit, String translit, int tid) {
